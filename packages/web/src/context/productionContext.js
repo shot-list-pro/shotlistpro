@@ -13,7 +13,7 @@ function ProductionProvider(props) {
 
   function getAllProductions() {
     axios
-      .get(`${SERVER}/productions/`)
+      .get(`/productions/`)
       .then(response => {
         setProductions(response.data);
       })
