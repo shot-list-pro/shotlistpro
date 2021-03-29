@@ -8,7 +8,7 @@ const Page = () => {
     <div className="page">
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/production/*" component={ProductionPage} />
+        <Route path="/production/:id" component={ProductionPage} />
       </Switch>
     </div>
   );
