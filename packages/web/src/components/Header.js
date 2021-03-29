@@ -33,7 +33,11 @@ const Header = () => {
 };
 
 const Logo = () => {
-  return <Image src={ShotListLogo} />;
+  return (
+    <Link to="/">
+      <Image src={ShotListLogo} />
+    </Link>
+  );
 };
 
 const NavBar = () => {
