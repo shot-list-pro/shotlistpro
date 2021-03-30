@@ -39,7 +39,7 @@ const MainContent = () => {
         {/* Loop over Productions and Create Cards */}
         {/* Link to single production page */}
         {productions.map(production => (
-          <Link to={{ pathname: `/production/${production._id}` }}>
+          <Link to={{ pathname: `/productions/${production._id}` }}>
             <ProductionCard key={production._id} data={production} />
           </Link>
         ))}
