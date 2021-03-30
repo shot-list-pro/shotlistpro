@@ -1,14 +1,9 @@
-import {
-  Center,
-  Box,
-  VStack,
-  Heading,
-  Textarea,
-  Divider,
-  EditablePreview,
-} from "@chakra-ui/react";
+import { Box, VStack, Heading, Textarea } from "@chakra-ui/react";
 
-import CardList from "./CardList";
+import PeopleList from "./PeopleList";
+import ScenesList from "./ScenesList";
+import ShotsList from "./ShotsList";
+
 export default function ProductionContent({ production }) {
   return (
     <Box px={[5, 10, 50, 100]}>
@@ -23,7 +18,6 @@ export default function ProductionContent({ production }) {
           Synopsis:
         </Heading>
         <Textarea
-          m={0}
           placeholder={production.brief}
           size="lg"
           resize="vertical"
@@ -41,7 +35,7 @@ export default function ProductionContent({ production }) {
         >
           Cast & Crew:
         </Heading>
-        <CardList people={production.people} />
+        <PeopleList people={production.people} />
         <Heading
           as="h2"
           size="lg"
@@ -51,7 +45,7 @@ export default function ProductionContent({ production }) {
         >
           Scenes:
         </Heading>
-        {/* <CardList cards={production.scenes} /> */}
+        <ScenesList scenes={production.scenes} />
         <Heading
           as="h2"
           size="lg"
@@ -61,7 +55,7 @@ export default function ProductionContent({ production }) {
         >
           Shots:
         </Heading>
-        {/* <CardList cards={production.shots} /> */}
+        <ShotsList shots={production.shots} />
       </VStack>
     </Box>
   );
