@@ -1,7 +1,8 @@
 import { Heading, Grid, Box, Button, Icon, Text } from "@chakra-ui/react";
-import ProductionCard from "../components/ProductionsCard";
+import ProductionCard from "./ProductionsCard";
 import { ReactComponent as SlateIcon } from "../assets/slate-icon.svg";
 import { useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { ProductionContext } from "../context/productionContext";
 const MainContent = () => {
   const { productions, getAllProductions } = useContext(ProductionContext);
@@ -35,21 +36,14 @@ const MainContent = () => {
         justify={["center", "center", "start", "center"]}
         px={[5, 10, 50, 100]}
       >
+        {/* Loop over Productions and Create Cards */}
+        {/* Link to single production page */}
         {productions.map(production => (
-          <ProductionCard key={production._id} data={production} />
+          <Link to={{ pathname: `/productions/${production._id}` }}>
+            <ProductionCard key={production._id} data={production} />
+          </Link>
         ))}
       </Grid>
-    </Box>
-  );
-};
-
-const emptyState = () => {
-  return (
-    <Box>
-      <Text>You don't have any active productions. Create one here.</Text>
-      <Button variant="primary" leftIcon={<Icon as={SlateIcon} boxSize={8} />}>
-        Create a New Production
-      </Button>
     </Box>
   );
 };
