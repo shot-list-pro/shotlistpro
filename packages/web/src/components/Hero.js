@@ -7,10 +7,14 @@ import {
   Heading,
   Button,
   Spacer,
+  Box,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { ReactComponent as SlateIcon } from "../assets/slate-icon.svg";
 import { IoPersonAdd } from "react-icons/io5";
 import HeroImage from "../assets/hero-image.webp";
+
+import Modal from "./Modal.jsx";
 
 const Hero = () => {
   return (
@@ -43,14 +47,37 @@ const Buttons = () => (
     direction={["column", null, "row"]}
     align="start"
   >
-    <Button variant="primary" leftIcon={<Icon as={SlateIcon} boxSize={8} />}>
-      Create a New Production
-    </Button>
+    <CreateNewProductionInModalButton />
+
     <Spacer d={[null, null, null, null, "none"]} />
     <Button variant="primary" leftIcon={<Icon as={IoPersonAdd} boxSize={8} />}>
       Create a New Contact
     </Button>
   </Stack>
 );
+
+const CreateNewProductionModal = props => {
+  return (
+    <Modal {...props} header="Add Production">
+      <Box h="80vh">Content</Box>
+    </Modal>
+  );
+};
+
+const CreateNewProductionInModalButton = () => {
+  const { onOpen, ...modalProps } = useDisclosure();
+  return (
+    <>
+      <Button
+        variant="primary"
+        onClick={onOpen}
+        leftIcon={<Icon as={SlateIcon} boxSize={8} />}
+      >
+        Create a New Production
+      </Button>
+      <CreateNewProductionModal {...modalProps} />
+    </>
+  );
+};
 
 export default Hero;

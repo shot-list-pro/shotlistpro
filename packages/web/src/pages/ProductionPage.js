@@ -9,11 +9,12 @@ import { useParams } from "react-router-dom";
 import { ProductionContext } from "../context/productionContext";
 import { useEffect, useContext } from "react";
 
-const ProductionPage = () => {
-  const { id } = useParams();
+const ProductionPage = ({ match }) => {
+  const { id } = match.params;
   const { production, getAProduction } = useContext(ProductionContext);
 
   useEffect(() => {
+    if (!id) return;
     getAProduction(id);
     window.scrollTo(0, 0);
   }, []);

@@ -18,6 +18,7 @@ function ProductionProvider(props) {
       .catch(err => console.log(err.response.data.errMessage));
   }
   function getAProduction(productionId) {
+    if (!productionId) return;
     axios
       .get(`/productions/${productionId}`)
       .then(response => {
